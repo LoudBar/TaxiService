@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface ShiftRepository extends CrudRepository<Shift, Long> {
     List<Shift> findAll(Long id);
+    Optional<Shift> findById(Long shiftId);
 }

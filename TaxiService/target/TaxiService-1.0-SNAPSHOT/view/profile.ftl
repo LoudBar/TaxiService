@@ -15,6 +15,14 @@
         <form class="upload" action="/file-upload">
             <button class="upload-button">Upload avatar</button>
         </form>
+
+        <form class="upload" action="/takeTrip">
+            <button class="upload-button">Order</button>
+        </form>
+
+        <form class="upload" action="/shifts">
+            <button class="upload-button">Manage trips</button>
+        </form>
     </div>
 
 </head>

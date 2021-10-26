@@ -14,7 +14,7 @@
     <form class="sign-up-form" method="post">
         <div><input class="sign-up-input" placeholder="Phone number" name="phoneNumber" type="text"></div>
         <div><input class="sign-up-input" placeholder="Password" name="password" type="password"></div>
-        <div class="sign-up-button-div"><button class="sign-up-button" type="submit">Sign-up</button></div>
+        <div class="sign-up-button-div"><button class="sign-up-button" type="submit">Sign-in</button></div>
     </form>
 
 </div>

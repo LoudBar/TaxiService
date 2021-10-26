@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
 @AllArgsConstructor
 @Data
@@ -14,7 +14,7 @@ public class Shift {
     private Long id;
     private String departurePlace;
     private String arrivalPlace;
-    private Long driverId;
+    private Driver driver;
     private Long customerId;
-    private Date date;
+    private Timestamp date;
 }
