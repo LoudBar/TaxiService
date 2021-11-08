@@ -5,6 +5,11 @@
     <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
 
     <div class="card">
+
+        <form class="sign-out" action="/sign-out">
+            <button class="upload-button">Sign out</button>
+        </form>
+
         <#if user.avatarId??>
             <img class="avatar" alt="IMAGE" src="/files/${user.avatarId}" />
         <#else>

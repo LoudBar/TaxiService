@@ -2,6 +2,7 @@ package ru.itis.services.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 import ru.itis.dao.CustomerRepository;
 import ru.itis.dto.CustomerForm;
 import ru.itis.services.validation.ErrorEntity;
@@ -9,7 +10,7 @@ import ru.itis.services.validation.Validator;
 
 import java.util.Optional;
 
-@Repository
+@Service
 public class ValidatorImpl implements Validator {
 
     private final CustomerRepository customerRepository;

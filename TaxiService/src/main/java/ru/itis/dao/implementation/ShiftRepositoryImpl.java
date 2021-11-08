@@ -57,16 +57,18 @@ public class ShiftRepositoryImpl implements ShiftRepository {
     @Override
     public Shift save(Shift item) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
+        Timestamp date = new Timestamp(System.currentTimeMillis());
         jdbcTemplate.update(connection -> {
             PreparedStatement statement = connection.prepareStatement(SQL_SAVE, new String[]{"id"});
             statement.setLong(1, item.getCustomerId());
             statement.setLong(2, item.getDriver().getId());
             statement.setString(3, item.getDeparturePlace());
             statement.setString(4, item.getArrivalPlace());
-            statement.setTimestamp(5, item.getDate());
+            statement.setTimestamp(5, date);
             return statement;
         }, keyHolder);
         item.setId(keyHolder.getKey().longValue());
+        item.setDate(date);
         return item;
     }
 

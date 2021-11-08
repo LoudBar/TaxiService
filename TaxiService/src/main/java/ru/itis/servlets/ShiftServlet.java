@@ -1,9 +1,11 @@
 package ru.itis.servlets;
 
 import org.springframework.context.ApplicationContext;
+import ru.itis.dao.ShiftRepository;
 import ru.itis.dto.CustomerDto;
 import ru.itis.dto.ShiftDto;
 import ru.itis.dto.ShiftForm;
+import ru.itis.models.Shift;
 import ru.itis.services.ShiftService;
 
 import javax.servlet.ServletConfig;
@@ -19,12 +21,14 @@ import java.io.IOException;
 public class ShiftServlet extends HttpServlet {
 
     private ShiftService shiftService;
+    private ShiftRepository shiftRepository;
 
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         ServletContext servletContext = servletConfig.getServletContext();
         ApplicationContext springContext = (ApplicationContext) servletContext.getAttribute("springContext");
         this.shiftService = springContext.getBean(ShiftService.class);
+        this.shiftRepository = springContext.getBean(ShiftRepository.class);
     }
 
     @Override
@@ -42,8 +46,10 @@ public class ShiftServlet extends HttpServlet {
                 .arrivalPlace(request.getParameter("arrivalPlace"))
                 .build();
 
-        shiftService.takeTrip(customerDto.getId(), shiftForm);
+        Shift shift = shiftService.takeTrip(customerDto.getId(), shiftForm);
 
-        response.sendRedirect("/shifts");
+        request.setAttribute("shift", shift);
+
+        request.getRequestDispatcher("/success.ftl").forward(request, response);
     }
 }

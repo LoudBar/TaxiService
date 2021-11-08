@@ -25,7 +25,7 @@ public class ShiftServiceImpl implements ShiftService {
     }
 
     @Override
-    public void takeTrip(Long id, ShiftForm shiftForm) {
+    public Shift takeTrip(Long id, ShiftForm shiftForm) {
 
         Shift shift = Shift.builder()
                 .customerId(id)
@@ -35,6 +35,8 @@ public class ShiftServiceImpl implements ShiftService {
                 .build();
 
         shiftRepository.save(shift);
+
+        return shift;
     }
 
     public Long rnd(int max)
