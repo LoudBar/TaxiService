@@ -25,8 +25,7 @@ public class SignUpServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext servletContext = config.getServletContext();
-        ApplicationContext springContext = (ApplicationContext) servletContext.getAttribute("springContext");
-        this.signUpService = springContext.getBean(SignUpService.class);
+        this.signUpService = (SignUpService) servletContext.getAttribute("signUpService");
     }
 
     @Override

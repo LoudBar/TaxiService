@@ -10,13 +10,11 @@ import ru.itis.services.validation.Validator;
 
 import java.util.Optional;
 
-@Service
 public class ValidatorImpl implements Validator {
 
     private final CustomerRepository customerRepository;
     private final String phoneRegex = "^((\\+7|7|8)+([0-9]){10})$";
 
-    @Autowired
     public ValidatorImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }

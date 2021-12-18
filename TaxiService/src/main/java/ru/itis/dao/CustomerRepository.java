@@ -6,7 +6,6 @@ import ru.itis.models.Customer;
 
 import java.util.Optional;
 
-@Repository
 public interface CustomerRepository extends CrudRepository<Customer, Long> {
     Optional<Customer> findById(Long id);
     void putAvatar(Long userId, Long fileId);

@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 import java.sql.PreparedStatement;
 import java.util.Optional;
 
-@Repository
 public class DriverRepositoryImpl implements DriverRepository {
 
     //language=SQL

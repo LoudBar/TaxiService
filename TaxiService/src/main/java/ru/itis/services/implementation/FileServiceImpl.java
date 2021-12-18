@@ -18,19 +18,17 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-@Service
 public class FileServiceImpl implements FileService {
 
-    String path = "C:/Users/incor/Pictures/";
+    String path;
 
     FilesRepository filesRepository;
     CustomerRepository customerRepository;
 
-
-    @Autowired
-    public FileServiceImpl(FilesRepository filesRepository, CustomerRepository customerRepository) {
+    public FileServiceImpl(FilesRepository filesRepository, CustomerRepository customerRepository, String path) {
         this.filesRepository = filesRepository;
         this.customerRepository = customerRepository;
+        this.path = path;
     }
 
     @Override

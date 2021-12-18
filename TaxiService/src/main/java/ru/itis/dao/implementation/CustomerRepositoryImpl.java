@@ -15,7 +15,6 @@ import java.sql.PreparedStatement;
 import java.sql.Types;
 import java.util.*;
 
-@Repository
 public class CustomerRepositoryImpl implements CustomerRepository {
 
     //language=SQl

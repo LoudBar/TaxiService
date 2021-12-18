@@ -26,9 +26,8 @@ public class ShiftServlet extends HttpServlet {
     @Override
     public void init(ServletConfig servletConfig) throws ServletException {
         ServletContext servletContext = servletConfig.getServletContext();
-        ApplicationContext springContext = (ApplicationContext) servletContext.getAttribute("springContext");
-        this.shiftService = springContext.getBean(ShiftService.class);
-        this.shiftRepository = springContext.getBean(ShiftRepository.class);
+        this.shiftRepository = (ShiftRepository) servletContext.getAttribute("shiftRepository");
+        this.shiftService = (ShiftService) servletContext.getAttribute("shiftService");
     }
 
     @Override

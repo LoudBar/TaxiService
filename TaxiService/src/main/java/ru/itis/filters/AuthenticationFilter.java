@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Arrays;
 
 @WebFilter("/*")
 public class AuthenticationFilter implements Filter {
@@ -21,9 +22,12 @@ public class AuthenticationFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if(request.getRequestURI().startsWith("/resources")) {
-            filterChain.doFilter(request, response);
-            return;
+        String[] allowedUrls = {"/resources", "/js", "/img"};
+        for(String url: allowedUrls) {
+            if(request.getRequestURI().startsWith(url)) {
+                filterChain.doFilter(request, response);
+                return;
+            }
         }
 
         // берем сессию у запроса

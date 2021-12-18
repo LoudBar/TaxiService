@@ -1,10 +1,14 @@
 package ru.itis.servlets;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import ru.itis.exceptions.NotFoundException;
 import ru.itis.models.FileInfo;
 import ru.itis.services.FileService;
+import ru.itis.services.SignUpService;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +19,11 @@ import java.io.IOException;
 @WebServlet("/files/*")
 public class FilesDownloadServlet extends HttpServlet {
 
+
     private FileService filesService;
 
     @Override
-    public void init(ServletConfig config) {
+    public void init(ServletConfig config) throws ServletException {
         this.filesService = (FileService) config.getServletContext().getAttribute("filesService");
     }
 

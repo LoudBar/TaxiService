@@ -13,14 +13,12 @@ import ru.itis.services.validation.Validator;
 
 import java.util.Optional;
 
-@Repository
 public class SignUpImpl implements SignUpService {
 
     private final CustomerRepository customerRepository;
     private final PasswordEncoder passwordEncoder;
     private final Validator validator;
 
-    @Autowired
     public SignUpImpl(CustomerRepository customerRepository, PasswordEncoder passwordEncoder, Validator validator) {
         this.customerRepository = customerRepository;
         this.passwordEncoder = passwordEncoder;

@@ -1,5 +1,6 @@
 package ru.itis.servlets;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.ApplicationContext;
 import ru.itis.dto.CustomerDto;
 import ru.itis.dto.CustomerForm;
@@ -20,12 +21,13 @@ import java.io.IOException;
 public class SignInServlet extends HttpServlet {
 
     private SignInService signInService;
+    private ObjectMapper objectMapper;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         ServletContext servletContext = config.getServletContext();
-        ApplicationContext springContext = (ApplicationContext) servletContext.getAttribute("springContext");
-        this.signInService = springContext.getBean(SignInService.class);
+        this.signInService = (SignInService) servletContext.getAttribute("signInService");
+        this.objectMapper = (ObjectMapper) servletContext.getAttribute("objectMapper");
     }
 
     @Override
@@ -35,22 +37,23 @@ public class SignInServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         CustomerForm form = CustomerForm.builder()
                 .phoneNumber(request.getParameter("phoneNumber"))
                 .password(request.getParameter("password"))
                 .build();
         CustomerDto customerDto;
+        response.setContentType("application/json");
 
         try {
             customerDto = signInService.signIn(form);
         } catch (ValidationException e) {
-            response.sendRedirect("/signIn");
+            response.setStatus(e.getEntity().getStatus());
+            objectMapper.writeValue(response.getOutputStream(), e.getEntity());
             return;
         }
 
         HttpSession session = request.getSession(true);
         session.setAttribute("user", customerDto);
-        response.sendRedirect("/profile");
+        response.getWriter().println("{}");
     }
 }

@@ -195,3 +195,8 @@ tr:last-of-type {
 .sign-out {
     padding-left: 10px;
 }
+
+.text {
+    padding-left: 20px;
+    color: rgb(117, 147, 231);
+}

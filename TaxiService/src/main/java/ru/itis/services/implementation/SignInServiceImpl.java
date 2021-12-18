@@ -12,13 +12,11 @@ import ru.itis.services.PasswordEncoder;
 import ru.itis.services.SignInService;
 import ru.itis.services.validation.ErrorEntity;
 
-@Service
 public class SignInServiceImpl implements SignInService {
 
     private final CustomerRepository customerRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
     public SignInServiceImpl(CustomerRepository customerRepository, PasswordEncoder passwordEncoder) {
         this.customerRepository = customerRepository;
         this.passwordEncoder = passwordEncoder;

@@ -7,17 +7,17 @@
 
     <div class="card">
 
-        <div class="departure">
-            <p>Departure: ${shift.departurePlace}</p>
-            <p>Arrival: ${shift.arrivalPlace}</p>
-            <p>Date: ${shift.date?datetime}</p>
+        <div class="container">
+            <p class="text">Departure: ${shift.departurePlace}</p>
+            <p class="text">Arrival: ${shift.arrivalPlace}</p>
+            <p class="text">Date: ${shift.date?datetime}</p>
             <div class="driver-avatar">
                 ${shift.driver.firstName} <img class="driver-avatar" alt="IMAGE" src="/files/${shift.driver.avatarId}"/>
             </div>
         </div>
 
         <form class="back-to-profile" action="/profile">
-            <button class="upload-button">Upload avatar</button>
+            <button class="upload-button">Profile</button>
         </form>
 
         <form class="shifts" action="/shifts">

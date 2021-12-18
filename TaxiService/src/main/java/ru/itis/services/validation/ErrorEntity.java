@@ -1,9 +1,10 @@
 package ru.itis.services.validation;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 
 @Getter
-// @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum ErrorEntity {
     // Общие ошибки
     INVALID_REQUEST(400, "Неверный запрос"),
